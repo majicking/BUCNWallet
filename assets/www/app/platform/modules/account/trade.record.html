@@ -1,0 +1,53 @@
+<ion-header-bar class="bar-themeCool" cache-view="false" hide-tabs="true">
+    <div class="button button-clear icon iconfont icon-jiantou-left" ng-click="goNativeBack('tab.account')"></div>
+    <h1 class="title1" style="color: #fff;font-weight: normal;">{{'transaction_records.details_of_transaction_records' | translate}}</h1>
+</ion-header-bar>
+
+<ion-content class="bg-color bg-themeCool">
+    <div class="trade-record--main box-bg">
+        <div class="f f-sb f-ac trade-record--list">
+            <span>{{'transaction_records.amount' | translate}}</span>
+            <span>{{vm.model.amount}}</span>
+        </div>
+        <div class="f f-sb f-ac trade-record--list">
+            <span>{{'transaction_records.remark' | translate}}</span>
+            <span ng-if="vm.model.currentType=='0'">{{'home.get' | translate}}</span>
+            <span ng-if="vm.model.currentType=='1'">{{'home.send' | translate}}</span>
+        </div>
+        <div class="f f-sb f-ac trade-record--list" ng-if="vm.model.currentType=='1'">
+            <span>{{'transaction_records.fee' | translate}}</span>
+            <span>{{vm.model.fee}}</span>
+        </div>
+        <div class="f f-sb f-ac trade-record--list" ng-if="vm.model.currentType=='1'">
+            <span>{{'transaction_records.address' | translate}}</span>
+            <span>{{vm.model.address}}</span>
+        </div>
+        <div class="f f-sb f-ac trade-record--list">
+            <span>{{'transaction_records.type' | translate}}</span>
+            <span ng-if="vm.model.state=='00'">{{'home.unconfirmed' | translate}}</span>
+            <span ng-if="vm.model.state=='01'">{{'home.confirmed' | translate}}</span>
+            <span ng-if="vm.model.state=='02'">{{'home.confirming' | translate}}</span>
+        </div>
+        <div class="f f-sb f-ac trade-record--list">
+            <span>{{'transaction_records.times' | translate}}</span>
+            <span>{{vm.model.confirmations}}</span>
+        </div>
+        <div class="f f-sb f-ac trade-record--list">
+            <span>{{'transaction_records.apply_time' | translate}}</span>
+            <span>{{vm.model.createTime|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        </div>
+        <div class="f f-sb f-ac trade-record--list" ng-if="vm.model.state=='01'">
+            <span>{{'transaction_records.update_time' | translate}}</span>
+            <span>{{vm.model.lastUpdateTime|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        </div>
+        <div class="f f-sb f-ac trade-record--list">
+            <span>{{'transaction_records.my_comment_to' | translate}}</span>
+            <textarea type="text" class="trade-textarea" ng-model="vm.model.commentTo" rows="3" readonly></textarea>
+        </div>
+        <div class="f f-sb f-ac trade-record--list" ng-if="vm.model.currentType=='1'">
+            <span>{{'transaction_records.my_comment' | translate}}</span>
+            <!--<span>{{ vm.model.commentTo }}</span>-->
+            <textarea type="text" class="trade-textarea" ng-model="vm.model.comment" rows="3" readonly></textarea>
+        </div>
+    </div>
+</ion-content>

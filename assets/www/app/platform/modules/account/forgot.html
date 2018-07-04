@@ -1,0 +1,64 @@
+<ion-header-bar class="bar-themeCool" cache-view="false">
+    <div class="button button-clear icon iconfont icon-jiantou-left" ng-click="goNativeBackParams('login', {type:'login'})"></div>
+    <h1 class="title1" style="color: #fff;font-weight: normal;">{{'forgot.forgot' | translate}}</h1>
+</ion-header-bar>
+<ion-content class="bg-color bg-themeCool">
+    <div class="register-main box-bg">
+
+        <div class="goPay-content">
+            <div class="goPay-info">
+                <div class="f-fs f-ac write goPay-s">
+                    <!--<i class="icon ion-ios-person" style="color:#666;font-size: 32px"></i>-->
+                    <input type="text" class="goPay-input"
+                           placeholder="{{'forgot.verification_code' | translate}}"
+                           ng-keyup="writeClear($event, 'write')"
+                           ng-focus="writeClear($event, 'write')"
+                           ng-blur="writeBlur($event, 'write')"
+                           maxlength="4"
+                           ng-model="vm.code">
+                    <img ng-src="{{vm.codeUrl}}" class="reg-code" ng-click="vm.getCode()" >
+                    <i class="icon ion-close-circled input-del-reg" style="padding-top: 2px;font-size: 15px;right: -5px" ng-click="vm.code=''"></i>
+                </div>
+                <div class="f-fs f-ac write goPay-s">
+                    <!--<i class="icon fa fa-mobile" style="color:#666;font-size: 30px"></i>-->
+                    <input type="tel" class="goPay-input"
+                           placeholder="{{'register.phone_number' | translate}}"
+                           ng-keyup="writeClear($event, 'write')"
+                           ng-focus="writeClear($event, 'write')"
+                           ng-blur="writeBlur($event, 'write')"
+                           ng-model="vm.phone">
+                    <button class="button-reg button-small" ng-click="vm.getCaptcha(false)" ng-disabled="vm.captchaBtn.disabled">{{vm.captchaBtn.label}}</button>
+                    <i class="icon ion-close-circled input-del-reg" ng-click="vm.phone=''"></i>
+                </div>
+                <div class="f-fs f-ac write goPay-s">
+                    <!--<i class="icon ion-ios-email" style="color:#666;font-size: 30px"></i>-->
+                    <input type="number" class="goPay-input"
+                           placeholder="{{'register.dynamic_code' | translate}}"
+                           ng-keyup="writeClear($event, 'write')"
+                           ng-focus="writeClear($event, 'write')"
+                           ng-blur="writeBlur($event, 'write')"
+                           ng-model="vm.captcha">
+                    <i class="icon ion-close-circled input-del-gopay" ng-click="vm.captcha=''"></i>
+                </div>
+                <div class="f-fs f-ac write goPay-s">
+                    <!--<i class="icon ion-ios-email" style="color:#666;font-size: 30px"></i>-->
+                    <input type="password" class="goPay-input"
+                           placeholder="{{'forgot.new_password' | translate}}"
+                           ng-keyup="writeClear($event, 'write')"
+                           ng-focus="writeClear($event, 'write')"
+                           ng-blur="writeBlur($event, 'write')"
+                           maxlength="22"
+                           ng-model="vm.password">
+                    <i class="icon ion-close-circled input-del-gopay" ng-click="vm.password=''"></i>
+                </div>
+            </div>
+        </div>
+        <div class="reg-padding font-12 payment-tips--weak">{{'forgot.the_password' | translate}}</div>
+        <div class="padding padding-horizontal f-c">
+            <div class="btn-box f-ac f-c" ng-click="vm.register()" style="margin: 10px 0px;">
+                <button class="btn-box--main f-ac f-c">{{'register.register_and_login' | translate}}</button>
+            </div>
+        </div>
+
+    </div>
+</ion-content>

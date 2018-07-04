@@ -1,0 +1,48 @@
+<ion-header-bar class="bar-themeCool" cache-view="false">
+    <h1 class="title1" style="color: #fff;font-weight: normal;">{{'pay_setting.add_pay_password' | translate}}</h1>
+</ion-header-bar>
+<ion-content class="bg-color bg-themeCool">
+    <div class="payment-content box-bg">
+        <div class="padding payment-tips font-12">
+            {{'pay_setting.tip' | translate}}
+        </div>
+        <div class="goPay-content">
+            <div class="goPay-info">
+                <div class="f-fs f-ac write goPay-s">
+                    <span class="input-label font-15">{{'pay_setting.new_password' | translate}}</span>
+                    <input type="password" class="goPay-input"
+                           placeholder="{{'pay_setting.new_pay_password' | translate}}"
+                           ng-keyup="writeClear($event, 'write')"
+                           ng-focus="writeClear($event, 'write')"
+                           ng-blur="writeBlur($event, 'write')"
+                           ng-model="vm.paymentPw">
+                    <i class="icon ion-close-circled input-del-gopay" style="padding-top: 2px;font-size: 15px;right: -5px" ng-click="vm.paymentPw=''"></i>
+                </div>
+            </div>
+            <div class="payment-tips--padding payment-tips--weak font-12">
+                {{'pay_setting.password_need' | translate}}
+            </div>
+            <div class="goPay-info">
+                <div class="f-fs f-ac write goPay-s">
+                    <span class="input-label font-15">{{'pay_setting.confirm_again' | translate}}</span>
+                    <input type="password" class="goPay-input"
+                           placeholder="{{'pay_setting.new_pay_password' | translate}}"
+                           ng-keyup="writeClear($event, 'write')"
+                           ng-focus="writeClear($event, 'write')"
+                           ng-blur="writeBlur($event, 'write')"
+                           maxlength="22"
+                           ng-model="vm.rePassword">
+                    <i class="icon ion-close-circled input-del-gopay" style="padding-top: 2px;font-size: 15px;right: -5px" ng-click="vm.rePassword=''"></i>
+                </div>
+            </div>
+            <div class="payment-tips--padding payment-tips--weak font-13">
+                {{'pay_setting.can_not_find' | translate}}
+            </div>
+        </div>
+        <div class="padding padding-horizontal f-c">
+            <div class="btn-box f-ac f-c btn-box--mt" ng-click="vm.confirm()">
+                <div class="btn-box--main f-ac f-c">{{'pay_setting.confirmation' | translate}}</div>
+            </div>
+        </div>
+    </div>
+</ion-content>

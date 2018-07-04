@@ -1,0 +1,12 @@
+<ion-tabs class="tabs-icon-top tabs-color-active-themeCool" ng-class="{'tabs-item-hide': $root.hideTabs}">
+
+    <ion-tab title="{{'tab.home' | translate}}" class="themeCool" icon-on="icon iconfont icon-icon-home2" icon-off="icon iconfont icon-icon-home" ui-sref="tab.account">
+        <ion-nav-view name="tab-account"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="{{'tab.my' | translate}}" class="themeCool" icon-on="icon iconfont icon-wode-active" icon-off="icon iconfont icon-wode3" ui-sref="tab.manage">
+        <ion-nav-view name="tab-manage"></ion-nav-view>
+    </ion-tab>
+
+</ion-tabs>
+

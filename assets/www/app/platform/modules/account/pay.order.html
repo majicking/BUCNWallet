@@ -1,0 +1,20 @@
+<ion-header-bar hide-tabs="true" id="s-header" class="bar-org bar bar-header" cache-view="false">
+    <div class="button button-icon-sm button-clear icon iconfont icon-jiantou" style="left: 2px;" ng-click="goNativeBackParams(vm.subAccountTypeText.split(',')[3], {subAccountType:vm.subAccountType})">
+    </div>
+    <h1 class="title1" style="color: #fff;font-weight: normal">支付订单</h1>
+</ion-header-bar>
+<ion-content class="bg-color scroll-content ionic-scroll  has-header">
+    <div class="list">
+        <div class="item item-icon-right">
+            <label class="font-15" style="color: #000;font-size: 18px;position: relative;top: -1px;">订单编号</label>
+            <div class="item-note" style="font-weight: bold;color: #000;font-size: 18px;">{{vm.model.orderNo}}</div>
+        </div>
+        <div class="item item-icon-right">
+            <label class="font-15" style="color: #000;font-size: 18px;position: relative;top: -1px;">{{vm.model.subject}}</label>
+            <div class="item-note" style="font-weight: bold;color: #000;font-size: 18px;">{{vm.model.totalAmount}}元</div>
+        </div>
+    </div>
+    <div class="padding-horizontal">
+        <button class="button button-block button-org" ng-click="vm.confirm()">确认支付</button>
+    </div>
+</ion-content>

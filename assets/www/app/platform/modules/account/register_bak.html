@@ -1,0 +1,111 @@
+<style>
+    .tx{
+        margin: 100px auto 20px ;
+        width: 25%;
+    }
+    .tx img{
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+    }
+    a{
+        text-decoration: none;
+    }
+</style>
+
+<ion-view view-title="{{'register.user_register' | translate}}" cache-view="false">
+    <ion-nav-bar class="bar-dblue">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon-sm button-clear icon iconfont icon-jiantou" ui-sref="login"></button>
+        </ion-nav-buttons>
+        <div class="bar bar-header">
+            <div class="title" style="background: #000;width: 100%;color: #fff; margin: 0;" translate="register.register"></div>
+        </div>
+    </ion-nav-bar>
+    <ion-content class="bg-color">
+        <!--<div class="list">-->
+            <!--<div class="item item-icon-left">-->
+                <!--<i class="icon ion-ios-person" style="color:#666;"></i>-->
+                <!--<input type="text" placeholder="用户名" ng-model="vm.username">-->
+            <!--</div>-->
+            <!--<div class="padding" style="font-size: 10px;color: #96ABBB;">-->
+                <!--用户名要求使用6-20个中、英文、数字及“-”符号-->
+            <!--</div>-->
+            <!--<div class="item item-icon-left">-->
+                <!--<i class="icon ion-ios-people" style="color:#666;font-size: 29px"></i>-->
+                <!--<input type="text" placeholder="推荐码" ng-model="vm.referralCode">-->
+            <!--</div>-->
+            <!--<div class="item item-icon-left">-->
+                <!--<i class="icon ion-android-lock" style="color:#666;font-size: 29px"></i>-->
+                <!--<input type="password" placeholder="密码" ng-model="vm.password">-->
+            <!--</div>-->
+            <!--<div class="padding" style="font-size: 10px;color: #96ABBB;">-->
+                <!--密码要求长度在6-22位字符之间，至少包含数字、字母(区分大小写)、符号(!#$%^&*.~)中的2种-->
+            <!--</div>-->
+            <!--<div class="item item-icon-left">-->
+                <!--<i class="icon iconfont icon-yanzhengma" style="font-size: 29px;color:#666;"></i>-->
+                <!--<input type="text" placeholder="验证码" ng-model="vm.code">-->
+                <!--<img ng-src="{{vm.codeUrl}}" ng-click="vm.getCode()" style="position: absolute;top: 8px;right: 16px;">-->
+            <!--</div>-->
+            <!--<div class="item item-icon-left item-button-right">-->
+                <!--<i class="icon fa fa-mobile" style="color:#666;font-size: 36px"></i>-->
+                <!--<input type="tel" placeholder="手机号" ng-model="vm.phone">-->
+                <!--<button class="button button-dblue button-small" style="font-size: 13px;" ng-click="vm.getCaptcha(true)" ng-disabled="vm.captchaBtn.disabled">{{vm.captchaBtn.label}}</button>-->
+            <!--</div>-->
+            <!--<div class="item item-icon-left">-->
+                <!--<i class="icon ion-ios-email" style="color:#666;"></i>-->
+                <!--<input type="tel" placeholder="动态码" ng-model="vm.captcha">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="padding" style="padding-bottom:0px; font-size: 12px;color: #96ABBB;">-->
+            <!--我们将对您的个人信息进行保密，请您放心填写。-->
+        <!--</div>-->
+        <!--<div class="padding">-->
+            <!--<button class="button button-block button-dblue" ng-click="vm.register()">-->
+                <!--注册-->
+            <!--</button>-->
+        <!--</div>-->
+
+        <div class="content has-header">
+            <div class="list" style="top: -45px;">
+                <label class="item item-input">
+                    <span class="input-label" style="width: 15%;"><i class="icon ion-android-phone-portrait" style="font-size:22px;"></i> </span>
+                    <input type="text" placeholder="{{'register.please_enter_your_phone_number' | translate}}" ng-model="vm.phone">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label" style="width: 15%;"><i class="icon ion-locked" style="font-size:22px;"></i> </span>
+                    <input type="password" placeholder="{{'register.pleaseenterpassword' | translate}}" ng-model="vm.password">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label" style="width: 15%;"><i class="icon ion-locked" style="font-size:22px;"></i> </span>
+                    <input type="password" placeholder="{{'register.pleaseenterthepasswordagain' | translate}}" ng-model="vm.repassword">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label" style="width: 15%;"><i class="icon ion-locked" style="font-size:22px;"></i> </span>
+                    <input type="password" placeholder="{{'register.pleaseenterpaypassword' | translate}}" ng-model="vm.paypassword">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label" style="width: 15%;"><i class="icon ion-locked" style="font-size:22px;"></i> </span>
+                    <input type="password" placeholder="{{'register.please_enter_verification_code' | translate}}" ng-model="vm.repaypassword">
+                </label>
+
+                <!--<label class="item item-input">-->
+                    <!--<span class="input-label" style="width: 15%;"><i class="icon ion-ios-color-filter" style="font-size:22px;"></i> </span>-->
+                    <!--<input type="text" placeholder="请输入暗号（选填）" ng-model="vm.referralCode">-->
+                <!--</label>-->
+                <label class="item item-input">
+                    <span class="input-label" style="width: 15%;"><i class="icon ion-ios-keypad" style="font-size:22px;"></i> </span>
+                    <input type="text" placeholder="{{'register.pleaseenterverificationcode' | translate}}" ng-model="vm.captcha">
+                </label>
+
+            </div>
+            <span style="position: absolute;right: 4%;/* bottom: 28px; */z-index: 99;bottom: 36.5%;"><a href="" ng-click="vm.getCaptcha(true)" ng-disabled="vm.captchaBtn.disabled" class="ng-binding">{{'register.getdynamiccode' | translate}}</a ></span>
+            <div class="padding">
+                <button class="button button-block button-positive" style="background: #1b82d2;top: -26px;" ng-click="vm.register()" translate="register.register"></button>
+            </div>
+            <span style="text-align: center;display: block;">{{'login.have_agreed' | translate}}<a href="" translate="login.agreement"></a></span>
+
+        </div>
+    </ion-content>
+</ion-view>

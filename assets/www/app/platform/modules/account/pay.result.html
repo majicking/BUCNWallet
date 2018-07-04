@@ -1,0 +1,26 @@
+<ion-header-bar hide-tabs="true" id="s-header" class="bar-org bar bar-header" cache-view="false">
+    <div class="button button-icon-sm button-clear icon iconfont icon-jiantou" style="left: 2px;" ng-click="goNativeBackParams(vm.model.subAccountTypeText.split(',')[3], {subAccountType:vm.subAccountType})">
+    </div>
+    <h1 class="title1" style="color: #fff;font-weight: normal">支付详情</h1>
+</ion-header-bar>
+<ion-content class="bg-color scroll-content ionic-scroll  has-header">
+    <div class="weui_msg" ng-if="vm.code=='1'">
+        <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
+        <div class="weui_text_area">
+            <h2 class="weui_msg_title">支付成功</h2>
+            <!--<p class="weui_msg_desc">请关闭此页面并重新访问</p>-->
+        </div>
+        <!--<div class="weui_opr_area">-->
+        <!--<p class="weui_btn_area">-->
+        <!--<button class="weui_btn weui_btn_primary" ng-click="vm.close()">关闭</button>-->
+        <!--</p>-->
+        <!--</div>-->
+    </div>
+    <!--支付失败-->
+    <div class="weui_msg" ng-if="vm.code=='2'">
+        <div class="weui_icon_area"><i class="weui_icon_warn weui_icon_msg"></i></div>
+        <div class="weui_text_area">
+            <h2 class="weui_msg_title">支付失败</h2>
+        </div>
+    </div>
+</ion-content>

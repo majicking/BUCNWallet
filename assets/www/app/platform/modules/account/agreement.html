@@ -1,0 +1,9 @@
+<ion-header-bar class="bar-themeCool" cache-view="false" hide-tabs="true">
+    <div class="button button-clear icon iconfont icon-jiantou-left" ng-click="goNativeBackParams('login', {type:'login'})"></div>
+    <h1 class="title1" style="color: #fff;font-weight: normal;">{{'login_setting.agreement' | translate}}</h1>
+</ion-header-bar>
+<ion-content class="bg-color bg-themeCool" ng-show="vm.showPage">
+    <div class="agreement-main box-bg">
+        <span ng-bind-html="vm.model.content"></span>
+    </div>
+</ion-content>

@@ -1,0 +1,48 @@
+<ion-header-bar class="bar-themeCool" cache-view="false" hide-tabs="true">
+    <div class="button button-clear icon iconfont icon-jiantou-left" ng-click="goNativeBack('tab.setting')"></div>
+    <h1 class="title1" style="color: #fff;font-weight: normal;">{{'verify.verify' | translate}}</h1>
+</ion-header-bar>
+
+<ion-content class="bg-color bg-themeCool">
+    <div class="box-bg verify-main">
+        <div class="goPay-content">
+            <div class="goPay-info">
+                <div class="f-fs f-ac write goPay-s">
+                    <i class="icon ion-ios-person" style="color:#D5C288;font-size: 33px"></i>
+                    <input type="text" class="goPay-input"
+                           placeholder="{{'verify.real_name' | translate}}"
+                           ng-keyup="writeClear($event, 'write')"
+                           ng-focus="writeClear($event, 'write')"
+                           ng-blur="writeBlur($event, 'write')"
+                           ng-readonly="vm.model.name!=null && vm.model.name!=''"
+                           ng-model="vm.model.name">
+                    <i class="icon ion-close-circled input-del-gopay" ng-click="vm.model.name=''" ng-if="vm.model.name==null || vm.model.name==''"></i>
+                </div>
+                <div class="f-fs f-ac write goPay-s">
+                    <i class="icon iconfont icon-shimingxinxi" style="color:#D5C288;font-size: 22px"></i>
+                    <input type="text" class="goPay-input"
+                           placeholder="{{'verify.id_number' | translate}}"
+                           ng-keyup="writeClear($event, 'write')"
+                           ng-focus="writeClear($event, 'write')"
+                           ng-blur="writeBlur($event, 'write')"
+                           ng-readonly="vm.model.name!=null && vm.model.name!=''"
+                           ng-model="vm.model.idCard">
+                    <i class="icon ion-close-circled input-del-gopay" ng-click="vm.model.idCard=''" ng-if="vm.model.name==null || vm.model.name==''"></i>
+                </div>
+            </div>
+        </div>
+        <div class="padding payment-tips--weak font-12">{{'verify.please_fill' | translate}}</div>
+        <div class="padding f-c" style="position: relative;">
+            <div class="btn-box f-ac f-c btn-box--mt" ng-if="vm.model.name!=null && vm.model.name!=''">
+                <button class="btn-box--main f-ac f-c" ng-if="vm.model.name!=null && vm.model.name!=''" disabled>{{'verify.verified' | translate}}</button>
+            </div>
+            <div class="btn-box f-ac f-c btn-box--mt" ng-click="vm.verify()" ng-if="vm.model.name==null || vm.model.name==''">
+                <button class="btn-box--main f-ac f-c" ng-if="vm.model.name==null || vm.model.name==''">{{'verify.verify' | translate}}</button>
+            </div>
+            <!--<button class="button button-block button-assertive" ng-click="vm.verify()">-->
+            <!--{{'verify.verify' | translate}}-->
+            <!--</button>-->
+        </div>
+
+    </div>
+</ion-content>

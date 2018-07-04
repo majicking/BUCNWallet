@@ -1,0 +1,74 @@
+<ion-view view-title="{{vm.isMobile==0? 'mobile.modify_mobile' : 'mobile.new_modify_mobile' | translate}}"  hide-tabs="true" cache-view="false">
+    <ion-nav-bar class="bar-themeCool">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon-sm button-clear icon iconfont icon-jiantou-left" ng-click="goNativeBack('tab.setting')"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="bg-color bg-themeCool">
+        <div class="register-main box-bg">
+            <div class="reg-padding font-12 payment-tips">{{'mobile.tip' | translate}}</div>
+            <div class="goPay-content">
+                <div class="goPay-info">
+                    <div class="f-fs f-ac write goPay-s">
+                        <!--<i class="icon ion-android-lock" style="color:#666;font-size: 30px"></i>-->
+                        <input type="text" class="goPay-input"
+                               placeholder="{{'mobile.verification_code' | translate}}"
+                               ng-keyup="writeClear($event, 'write')"
+                               ng-focus="writeClear($event, 'write')"
+                               ng-blur="writeBlur($event, 'write')"
+                               maxlength="4"
+                               ng-model="vm.code">
+                        <img ng-src="{{vm.codeUrl}}" class="reg-code" ng-click="vm.getCode()" >
+                        <!--<button class="button button-dblue button-small" style="position: absolute;top: 8px;right: 16px;background: #fff;width: 0px;height: 0px"></button>-->
+                        <i class="icon ion-close-circled input-del-reg" style="padding-top: 2px;font-size: 15px;right: -5px" ng-click="vm.code=''"></i>
+                    </div>
+                    <div class="f-fs f-ac write goPay-s">
+                        <!--<i class="icon fa fa-mobile" style="color:#666;font-size: 30px"></i>-->
+                        <input type="tel" class="goPay-input"
+                               placeholder="{{vm.isMobile==0? 'mobile.mobile' : 'mobile.new_mobile' | translate}}"
+                               ng-keyup="writeClear($event, 'write')"
+                               ng-focus="writeClear($event, 'write')"
+                               ng-blur="writeBlur($event, 'write')"
+                               ng-model="vm.phone">
+                        <button class="button-reg button-small" ng-click="vm.getCaptcha(true)" ng-disabled="vm.captchaBtn.disabled">{{vm.captchaBtn.label}}</button>
+                        <i class="icon ion-close-circled input-del-reg" ng-click="vm.phone=''"></i>
+                    </div>
+                    <div class="f-fs f-ac write goPay-s">
+                        <!--<i class="icon ion-ios-email" style="color:#666;font-size: 30px"></i>-->
+                        <input type="number" class="goPay-input"
+                               placeholder="{{'mobile.dynamic_code' | translate}}"
+                               ng-keyup="writeClear($event, 'write')"
+                               ng-focus="writeClear($event, 'write')"
+                               ng-blur="writeBlur($event, 'write')"
+                               ng-model="vm.captcha">
+                        <i class="icon ion-close-circled input-del-gopay" ng-click="vm.captcha=''"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="reg-padding font-12 payment-tips--weak">{{'mobile.request' | translate}}</div>
+            <div class="goPay-content">
+
+                <div class="goPay-info">
+                    <div class="f-fs f-ac write goPay-s">
+                        <!--<i class="icon ion-android-lock" style="color:#666;font-size: 30px"></i>-->
+                        <input type="password" class="goPay-input"
+                               placeholder="{{'mobile.login_password' | translate}}"
+                               ng-keyup="writeClear($event, 'write')"
+                               ng-focus="writeClear($event, 'write')"
+                               ng-blur="writeBlur($event, 'write')"
+                               maxlength="22"
+                               ng-model="vm.password">
+                        <i class="icon ion-close-circled input-del-gopay" style="padding-top: 2px;font-size: 15px;right: -5px" ng-click="vm.password=''"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="reg-padding font-12 payment-tips--weak">{{'mobile.we_will_keep' | translate}}</div>
+
+            <div class="padding f-c">
+                <div class="btn-box f-ac f-c" ng-click="vm.mobile()" style="margin: 10px 0px;">
+                    <button class="btn-box--main f-ac f-c">{{'mobile.modify_phone' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

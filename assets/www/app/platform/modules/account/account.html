@@ -1,0 +1,143 @@
+<script type="application/javascript">
+    function slideChange() {
+        var total_height = $("#totalFix").offset().top;
+        var List_height = $("#listFix").offset().top;
+        if (total_height < 115 && total_height > -31) {
+//            $("#total").slideDown("fast");
+            $("#list").slideUp("fast");
+        } else if(List_height <= 115) {
+//            $("#total").slideUp("fast");
+            $("#list").slideDown("fast");
+        } else {
+//            $("#total").slideUp("fast");
+            $("#list").slideUp("fast");
+        }
+    };
+</script>
+<ion-header-bar class="bar-themeCool" cache-view="false" hide-tabs="false">
+    <div class="button button-clear f-ac f-c">
+        <img src="app/platform/resources/img/small-logo.png"  height="33px" width="33px">
+    </div>
+    <h1 class="title1" style="color: #fff;font-weight: normal;">{{'home.eif_wallet' | translate}}</h1>
+</ion-header-bar>
+<div class="bg-themeCool">
+    <div class="row" style="margin-top:43px;text-align: center;position: relative;z-index: 999;background-image: url('app/platform/resources/img/bgTheemeCool.jpg');background-size: 100%;background-position: 0px 0px;">
+        <!--<div class="col" ng-click="goNativeBack('tab.account-scanqrcode')" style="position: relative;z-index: 999;">-->
+        <div class="col" ng-click="vm.scanner()" style="position: relative;z-index: 999;">
+            <i class="icon iconfont icon-dvt-saoys fb250"></i>
+            <div class="col-demo c-white f14">{{'home.scan' | translate}}</div>
+        </div>
+        <div class="col" ng-click="goNativeBack('tab.account-qrcode')" style="position: relative;z-index: 999;">
+            <i class="icon iconfont icon-erweima2 fb250"></i>
+            <div class="col-demo c-white f14">{{'home.qr_code' | translate}}</div>
+        </div>
+        <div class="col" ng-click="goNativeBack('tab.account-gopay')" style="position: relative;z-index: 999;">
+            <i class="icon iconfont icon-transfer-accounts fb250"></i>
+            <div class="col-demo c-white f14">{{'home.transfer_accounts' | translate}}</div>
+        </div>
+        <div id="total" class="item item-icon-left item-icon-right" style="display:none;border:none; top: 151.5px; display:none; left:0 ; text-align:left; position: absolute;z-index: 9999;width: 100%;border-bottom: none !important; padding-top: 10px; border-top:none; padding-bottom:10px;padding-left: 33px !important;">
+            <i class="icon iconfont icon-icon_QRcode1 c-blue" style=" font-size: 120%; "></i>
+            <span> {{'home.my_assets' | translate}}</span>
+            <i href="javascript:void(0);" ng-class="{'icon iconfont icon-kejian2 icon-accessory':vm.flagTotal==true, 'icon iconfont icon-bukejian icon-accessory':vm.flagTotal==false}"  style="font-size: 20px;right: 15px" ng-click="vm.displayTotal()"></i>
+        </div>
+        <div id="list" class="item item-icon-left item-icon-right item1">
+            <span class="account-money--pir" ng-if="vm.flagList==true">{{'home.transaction_record' | translate}}({{'home.total' | translate}} {{vm.listLength}} {{'home.items' | translate}})</span>
+            <span class="account-money--pir" ng-if="vm.flagList==false">{{'home.transaction_record' | translate}}({{'home.total' | translate}} **** {{'home.items' | translate}})</span>
+        </div>
+    </div>
+    <ion-content class="accountBg-color" style="margin-top: 90px" onscroll="slideChange()">
+        <ion-refresher on-refresh="vm.doRefresh()"
+                       pulling-text="{{'home.pull_down_refresh' | translate}}"
+                       refreshing-text="{{'home.refresh' | translate}}"
+                       refreshing-icon="ion-loading-b">
+        </ion-refresher>
+        <div class="content ">
+            <div class="account-main box-bg">
+                <div class="content ionic-pseudo">
+                    <div id="totalFix" class="account-money--pir">
+                        <div class="f f-sb account-title">
+                            <span>{{'home.my_assets' | translate}}</span>
+                            <i href="javascript:void(0);" ng-class="{'icon iconfont icon-kejian2 icon-accessory':vm.flagTotal==true, 'icon iconfont icon-bukejian icon-accessory':vm.flagTotal==false}"  style="font-size: 20px;right: 15px" ng-click="vm.displayTotal()"></i>
+                        </div>
+                        <div class="account-money f f-sb account-money--last">
+                            <div class="f f-dc account-money--box">
+                                <span class="payment-tips--weak account-money--span">{{'home.wallet_balance' | translate}}</span>
+                                <i class="icon c22 fb200" ng-if="vm.ifConnect==1">
+                                    <span style="font-size:20px;color: #D7C489;" ng-if="vm.flagTotal==false">****</span>
+                                    <span class="account-money--pir" id="amount" decimals="8" count-up startVal="0" end-val="vm.balanceModel.cashAmount"  duration="1" ng-if="vm.flagTotal==true" style="font-size:1.565rem;color: #D7C489;font-weight: bold"></span>
+                                    <span class="hidden" style="font-size:13px;color: #D7C489">EIF</span>
+                                </i>
+                                <i class="icon c22 fb200" ng-if="vm.ifConnect!='1'" style="font-size:15px">—/—</i>
+                            </div>
+                        </div>
+                        <div class="account-money f f-sb">
+                            <div class="f f-dc account-money--box">
+                                <span class="payment-tips--weak account-money--span">{{'home.frozen' | translate}}</span>
+                                <i class="icon c22 fb200" style="color:#D7C489;" ng-if="vm.ifConnect==1">
+                                    <span style="font-size:20px;" ng-if="vm.flagTotal==false">****</span>
+                                    <span style="font-size:1.565rem;" class="payment-tips--weak account-money--pir" ng-if="vm.flagTotal==true">{{vm.balanceModel.freezeAmount}}</span>
+                                </i>
+                                <i class="icon c22 fb200" ng-if="vm.ifConnect!='1'" style="font-size:15px">—/—</i>
+                            </div>
+                            <div class="f f-dc account-money--box">
+                                <span class="payment-tips--weak account-money--span">{{'home.waiting_release' | translate}}</span>
+                                <i class="icon c22 fb200" ng-if="vm.ifConnect=='1'">
+                                    <span style="font-size:20px;color: #D7C489;" ng-if="vm.flagTotal==false">****</span>
+                                    <span style="font-size:1.565rem;" class="payment-tips--weak account-money--pir" ng-if="vm.flagTotal==true">{{vm.balanceModel.unGetAmount}}</span>
+                                </i>
+                                <i class="icon c22 fb200" ng-if="vm.ifConnect!='1'" style="font-size:15px">—/—</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="listFix">
+                        <span class="account-money--pir" ng-if="vm.flagList==true">{{'home.transaction_record' | translate}} ({{'home.total' | translate}} {{vm.listLength}} {{'home.items' | translate}})</span>
+                        <span class="account-money--pir" ng-if="vm.flagList==false">{{'home.transaction_record' | translate}} ({{'home.total' | translate}} **** {{'home.items' | translate}})</span>
+                    </div>
+                    <div class="f f-sb f-ac account-list" ng-repeat='item in vm.items' ng-click="goNativeBackParams('tab.account-traderecord',{id:item.id})">
+                        <div class="f f-ac f-fs">
+                            <img ng-if="item.imgAddr=='pc_wallet'" ng-src="app/platform/resources/img/pc.png" class="account-userIcon">
+                            <img ng-if="item.imgAddr!='pc_wallet'" ng-src="{{item.imgAddr?item.imgAddr:'app/platform/resources/img/user.png'}}" class="account-userIcon">
+                            <div class="f f-dc account-pirInfo" ng-if="item.state=='01'">
+                                <p class="accunt-p account-money--pir" ng-if="item.currentType=='0'">{{'home.get' | translate}}({{'home.confirmed' | translate}})</p>
+                                <p class="accunt-p account-money--pir" ng-if="item.currentType=='1'">{{'home.send' | translate}}({{'home.confirmed' | translate}})</p>
+                                <span class="accunt-time account-money--pir">{{item.createTime|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                            </div>
+                            <div class="f f-dc account-pirInfo" ng-if="item.state=='00'">
+                                <p class="accunt-p account-money--pir" ng-if="item.currentType=='0'">{{'home.get' | translate}}({{'home.unconfirmed' | translate}} : {{item.confirmations}} {{'home.times' | translate}})</p>
+                                <p class="accunt-p account-money--pir" ng-if="item.currentType=='1'">{{'home.send' | translate}}({{'home.unconfirmed' | translate}} : {{item.confirmations}} {{'home.times' | translate}})</p>
+                                <span class="accunt-time account-money--pir">{{item.createTime|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                            </div>
+                            <div class="f f-dc account-pirInfo" ng-if="item.state=='02'">
+                                <p class="accunt-p account-money--pir" ng-if="item.currentType=='0'">{{'home.get' | translate}}({{'home.confirming' | translate}} : {{item.confirmations}} {{'home.times' | translate}})</p>
+                                <p class="accunt-p account-money--pir" ng-if="item.currentType=='1'">{{'home.send' | translate}}({{'home.confirming' | translate}} : {{item.confirmations}} {{'home.times' | translate}})</p>
+                                <span class="accunt-time account-money--pir">{{item.createTime|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p ng-if="item.state=='01'">
+                                <span class="account-money--pir" ng-class="{true:'c-gold',false:'c-weak'}[item.currentType=='0']">{{item.amount}}</span>
+                            </p>
+                            <p ng-if="item.state=='00'">
+                                <span class="account-money--pir" ng-class="{true:'c-gold',false:'c-weak'}[item.currentType=='0']">{{item.amount}}</span>
+                            </p>
+                            <p ng-if="item.state=='02'">
+                                <span class="account-money--pir" ng-class="{true:'c-gold',false:'c-weak'}[item.currentType=='0']">{{item.amount}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <i class="account-error" ng-if="vm.ifConnect=='0'&&!vm.isInitialized">
+                        {{'home.wallet_error'| translate}}
+                    </i>
+                    <i class="account-error" ng-if="vm.ifConnect=='2'">
+                        {{'home.address_error'| translate}}
+                    </i>
+                </div>
+            </div>
+            <div class="f f-c f-ac account-footer">
+                <span>—— BUCN ——</span>
+            </div>
+        </div>
+        <ion-infinite-scroll ng-if="vm.flagList&&vm.hasMoreData" immediate-check="false" on-infinite="vm.loadMore()" spinner="lines" distance="1%">
+        </ion-infinite-scroll>
+    </ion-content>
+</div>

@@ -1,0 +1,23 @@
+<ion-view view-title="添加推荐人" hide-tabs="true" cache-view="false">
+    <ion-nav-bar class="bar-dblue">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon-sm button-clear icon iconfont icon-jiantou" ng-click="goNativeBack('tab.manage')"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="bg-color">
+        <div class="padding" style="font-size: 11px;color: orangered;">
+            提示：推荐人只能绑定一次，请谨慎填写
+        </div>
+        <div class="list">
+            <div class="item item-input">
+                <span class="input-label font-15" style="font-weight: normal">推荐码</span>
+                <input type="text" placeholder="请输入推荐人的推荐码" ng-model="vm.referralCode">
+            </div>
+        </div>
+        <div class="padding-top padding-horizontal">
+            <button class="button button-block button-dblue" ng-click="vm.addReferralCode()">
+                添加
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

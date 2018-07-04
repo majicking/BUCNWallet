@@ -1,0 +1,78 @@
+<ion-header-bar class="bar-themeCool" cache-view="false" hide-tabs="true">
+    <div class="button button-clear icon iconfont icon-jiantou-left" ng-click="goNativeBack('tab.account')"></div>
+    <h1 class="title1" style="color: #fff;font-weight: normal;">{{'transfer.transfer_accounts' | translate}}</h1>
+</ion-header-bar>
+<ion-content class="bg-color bg-themeCool">
+    <div class="goPay-main box-bg">
+        <div class="padding font-12 payment-tips">
+            {{'transfer.the_transfer_irreversible' | translate}}
+        </div>
+        <div class="goPay-content">
+            <div class="goPay-info">
+                <div class="f-fs f-ac write goPay-s">
+                    <span class="gopay-span">{{'transfer.transfer_address' | translate}}</span>
+                    <input type="text" class="goPay-input"
+                           placeholder="{{'transfer.please_enter_a_real_transfer_address' | translate}}"
+                           ng-keyup="writeClear($event, 'write')"
+                           ng-focus="writeClear($event, 'write')"
+                           ng-blur="writeBlur($event, 'write')"
+                           ng-model="vm.input.toAddress">
+                    <i class="icon ion-close-circled input-del-gopay" style="padding-top: 2px;font-size: 15px;right: -5px" ng-click="vm.input.toAddress=''"></i>
+                </div>
+                <div class="f-fs f-ac write goPay-s">
+                    <span class="gopay-span">{{'transfer.transfer_amount' | translate}}</span>
+                    <input type="text" class="goPay-input"
+                           placeholder="{{'transfer.please_enter_a_valid_amount' | translate}}"
+                           ng-keyup="writeClear($event, 'write')"
+                           ng-focus="writeClear($event, 'write')"
+                           ng-blur="writeBlur($event, 'write')"
+                           ng-model="vm.input.amount">
+                    <i class="icon ion-close-circled input-del-gopay" style="padding-top: 2px;font-size: 15px;right: -5px" ng-click="vm.input.amount=''"></i>
+                </div>
+                <div class="f-fs f-ac write goPay-s">
+                    <span class="gopay-span">{{'transfer.pay_password' | translate}}</span>
+                    <input type="password" class="goPay-input"
+                           placeholder="{{'transfer.please_enter_transaction_password' | translate}}"
+                           ng-keyup="writeClear($event, 'write')"
+                           ng-focus="writeClear($event, 'write')"
+                           ng-blur="writeBlur($event, 'write')"
+                           ng-model="vm.input.payPassword">
+                    <i class="icon ion-close-circled input-del-gopay" style="padding-top: 2px;font-size: 15px;right: -5px" ng-click="vm.input.payPassword=''"></i>
+                </div>
+            </div>
+        </div>
+        <div class="goPay-content goPay-info--text write">
+                <textarea type="text" class="goPay-info--input"
+                          placeholder="{{'transfer.please_enter_my_comment' | translate}}"
+                          rows="3"
+                          ng-keyup="writeClear($event, 'write')"
+                          ng-focus="writeClear($event, 'write')"
+                          ng-blur="writeBlur($event, 'write')"
+                          ng-model="vm.input.myRemark">
+                    </textarea>
+            <i class="icon ion-close-circled input-del-gopay" ng-click="vm.input.myRemark=''"></i>
+        </div>
+        <div class="goPay-content goPay-info--text write">
+                <textarea type="text" class="goPay-info--input"
+                          placeholder="{{'transfer.please_enter_my_comment_to' | translate}}"
+                          rows="3"
+                          ng-keyup="writeClear($event, 'write')"
+                          ng-focus="writeClear($event, 'write')"
+                          ng-blur="writeBlur($event, 'write')"
+                          ng-model="vm.input.sendRemark">
+                    </textarea>
+            <i class="icon ion-close-circled input-del-gopay" ng-click="vm.input.sendRemark=''"></i>
+        </div>
+        <div class="padding payment-tips--weak font-12">
+            {{'transfer.recommend' | translate}} {{vm.times}} {{'transfer.after' | translate}}
+        </div>
+        <div class="padding f-c">
+            <!--<button class="button button-block button-dblue" style="background: rgb(237,73,71);" ng-click="vm.commit()">-->
+            <!--{{'transfer.commit' | translate}}-->
+            <!--</button>-->
+            <div class="btn-box f-ac f-c" ng-click="vm.commit()" style="margin: 10px 0px;">
+                <div class="btn-box--main f-ac f-c">{{'transfer.commit' | translate}}</div>
+            </div>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-view view-title="添加代理商" hide-tabs="true" cache-view="false">
+    <ion-nav-bar class="bar-dblue">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon-sm button-clear icon iconfont icon-jiantou" ng-click="goNativeBack('tab.manage')"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="bg-color">
+        <div class="list">
+            <div class="item item-input">
+                <span class="input-label font-15" style="font-weight: normal">推荐码</span>
+                <input type="text" placeholder="请输入代理商的推荐码" ng-model="vm.cmCode">
+            </div>
+        </div>
+        <div class="padding-top padding-horizontal">
+            <button class="button button-block button-dblue" ng-click="vm.addCmCode()">
+                添加
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,25 @@
+<ion-header-bar hide-tabs="true" id="s-header" class="{{vm.model.subAccountTypeText.split(',')[4].split(':')[0]}}" cache-view="false">
+    <div class="button button-icon-sm button-clear icon iconfont icon-jiantou" style="left: 2px;" ng-click="goNativeBackParams(vm.model.subAccountTypeText.split(',')[3], {subAccountType:vm.subAccountType})">
+    </div>
+    <h1 class="title1" style="color: #fff;font-weight: normal">转入</h1>
+</ion-header-bar>
+<ion-content class="{{vm.model.subAccountTypeText.split(',')[4].split(':')[1]}}">
+    <div class="list">
+        <label class="item item-input item-stacked-label withdraw">
+            <span class="input-label withdraw">充值金额</span>
+            <input type="number" decimals="2"  style="color: #000;font-size: 16px;position: relative;top: -1px;"
+                   ng-model="vm.model.amount"
+                   ng-change="vm.amountChanged()"
+                   placeholder="输入转入金额">
+        </label>
+        <div class="item withdraw item-icon-right" ng-click="vm.payTypeChanged(payType.value)" ng-repeat="payType in vm.payTypeList">
+            <img ng-src="{{payType.url}}" alt="" width="35" style="float:left;">
+            <label class="font-15" style="color: #000;font-size: 18px;position: relative;left:10px;line-height: 35px"> {{payType.text}}</label>
+            <i class="icon balanced" ng-class="{'ion-ios-circle-outline':vm.model.payType!=payType.value,'ion-ios-checkmark-outline':vm.model.payType==payType.value}"></i>
+        </div>
+    </div>
+    <div class="padding-horizontal">
+        <a class="button button-block {{vm.model.subAccountTypeText.split(',')[4].split(':')[3]}}" ng-if="vm.model.payType==2" ng-disabled="vm.disabled" href="http://www.bucncoin.com/api/pay/alipay?total={{vm.model.amount}}&type={{vm.model.payType}}&userId={{vm.model.userId}}&subAccountType={{vm.subAccountType}}">提交订单</a>
+        <a class="button button-block {{vm.model.subAccountTypeText.split(',')[4].split(':')[3]}}" ng-if="vm.model.payType==1" ng-disabled="vm.disabled" href="http://www.bucncoin.com/api/pay/wxpay?total={{vm.model.amount}}">提交订单</a>
+    </div>
+</ion-content>

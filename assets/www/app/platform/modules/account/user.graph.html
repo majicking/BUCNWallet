@@ -1,0 +1,41 @@
+<ion-view hide-tabs="true" view-title="推广关系" cache-view="false">
+    <ion-nav-bar class="bar-dblue">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon-sm button-clear icon iconfont icon-jiantou" ng-click="goNativeBack('tab.manage')"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="bg-color" ng-show="vm.showPage">
+        <div class="padding-horizontal">
+            <button class="button button-block button-energized" ng-disabled="vm.stack.length<2" ng-click="vm.goBack()">上一级</button>
+        </div>
+        <div class="list list-inset">
+            <div class="item item-sm font-13" style="background-color: #68829b">
+                <label style="color: #FFFFFF;">总推荐</label>
+                <div class="item-note" style="color: #FFFFFF;">{{vm.total}}人</div>
+            </div>
+            <div class="item item-sm font-13" style="background-color: #f7f7f7">
+                <label>用户信息</label>
+                <div class="item-note">消费额 / 推荐数</div>
+            </div>
+            <div class="item item-sm text-center" ng-show="vm.items.length==0">暂无被推荐人</div>
+            <div class="item item-sm" ng-repeat='item in vm.items' ng-click="vm.search(1,item.username,true)">
+                <div class="graph-list-label">{{item.name}}</div>
+                <div class="graph-list-date">{{item.grade}}</div>
+                <div class="graph-list-amount">{{item.bizAmount|number:2}}</div>
+                <div class="graph-list-note">{{item.total}}</div>
+            </div>
+            <div class="item item-sm text-center font-13" style="background-color: #f7f7f7">
+                共 {{vm.totalItems}} 条记录，每页{{vm.itemsPerPage}}条，共{{vm.totalPages}}页
+            </div>
+        </div>
+        <div class="padding text-center col-center">
+            <button class="button button-small button-dblue" ng-disabled="vm.currentPage == 1" ng-click="vm.search(vm.currentPage-1,vm.username,false)">
+                上一页
+            </button>
+            <span class="padding font-20" style="line-height: 1.6;">{{vm.currentPage}}/{{vm.totalPages}}</span>
+            <button class="button button-small button-dblue" ng-disabled="vm.currentPage >= vm.totalPages" ng-click="vm.search(vm.currentPage+1,vm.username,false)">
+                下一页
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

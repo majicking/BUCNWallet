@@ -1,0 +1,41 @@
+<ion-view view-title="忘记密码" cache-view="false">
+    <ion-nav-bar class="bar-dblue">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon-sm button-clear icon iconfont icon-jiantou" ui-sref="qiye-login"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="bg-color">
+        <div class="list">
+            <div class="item item-icon-left">
+                <i class="icon ion-ios-person" style="color:#666;"></i>
+                <input type="text" placeholder="用户名" ng-model="vm.username">
+            </div>
+            <div class="item item-icon-left">
+                <i class="icon iconfont icon-yanzhengma" style="font-size: 29px;color:#666;"></i>
+                <input type="text" placeholder="验证码" ng-model="vm.code">
+                <img ng-src="{{vm.codeUrl}}" ng-click="vm.getCode()" style="position: absolute;top: 8px;right: 16px;">
+            </div>
+            <div class="item item-icon-left item-button-right">
+                <i class="icon fa fa-mobile" style="color:#666;font-size: 36px;"></i>
+                <input type="tel" placeholder="手机号" ng-model="vm.phone">
+                <button class="button button-dblue button-small" style="font-size: 13px;" ng-click="vm.getCaptcha(false)" ng-disabled="vm.captchaBtn.disabled">{{vm.captchaBtn.label}}</button>
+            </div>
+            <div class="item item-icon-left">
+                <i class="icon ion-ios-email" style="color:#666;"></i>
+                <input type="number" placeholder="动态码" ng-model="vm.captcha">
+            </div>
+            <div class="item item-icon-left">
+                <i class="icon ion-android-lock" style="color:#666;font-size: 29px;"></i>
+                <input type="password" placeholder="新密码" ng-model="vm.password">
+            </div>
+            <div class="padding" style="padding-bottom:0px; font-size: 10px;color: #96ABBB;">
+                密码要求长度在6-22位字符之间，至少包含数字、字母(区分大小写)、符号(!#$%^&*.~)中的2种
+            </div>
+        </div>
+        <div class="padding padding-horizontal">
+            <button class="button button-block button-dblue" ng-click="vm.forgot()">
+                修改密码
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

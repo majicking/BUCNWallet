@@ -1,0 +1,98 @@
+<style>
+    .item-toggle .toggle{
+        top:4px !important;
+        height: 38px !important;
+        overflow: hidden !important;
+    }
+    .patternLock-icon{
+        position: absolute;
+        color: #22ca3f;
+        font-size: 30px;
+        top: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .on-off_man{
+        width: 100%;
+        position: relative;
+        margin-top: -1.25rem;
+        font-size: 1.25rem;
+    }
+    .on-off_man label{
+        top: .625rem;
+        margin-left: .75rem;
+    }
+    .mui-switch {
+        width: 2.8125rem;
+        height: 1.5625rem;
+        position: relative;
+        border: 1px solid transparent;
+        background-color: #ccc;
+        box-shadow: #dfdfdf 0 0 0 0 inset;
+        border-radius: 1.25rem;
+        display: inline-block;
+        -webkit-appearance: none;
+        outline: none;
+        transition: all .4s ease;
+    }
+    .mui-switch:before {
+        content: '';
+        width: 1.375rem;
+        height: 1.375rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 1.25rem;
+        background-color: #fff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        transition: all .4s ease;
+    }
+    .mui-switch:checked {
+        background-color: #C8B683;
+    }
+    .mui-switch:checked:before {
+        left: 1.25rem;
+    }
+</style>
+<script>
+    $(function(){
+        $('.toggle').css({
+            top: "4px;",
+            height: "38px;",
+            overflow: "hidden;"
+        });
+        $('#setting_used').find('label').attr('style','left:315px;top:5px;');
+        $('#setting_used').find('div').attr('style','margin-left:5px;');
+    });
+</script>
+<ion-header-bar class="bar-themeCool" cache-view="false" hide-tabs="true">
+    <div class="button button-clear icon iconfont icon-jiantou-left" ng-click="goNativeBack('tab.setting')"></div>
+    <h1 class="title1" style="color: #fff;font-weight: normal;">{{'pattern_setting.pattern_password' | translate}}</h1>
+</ion-header-bar>
+<ion-content class="bg-color bg-themeCool">
+    <div class="setting-main box-bg">
+        <div class="padding payment-tips font-12">
+            {{'pattern_setting.tip' | translate}}
+        </div>
+        <div class="list pattern-setting">
+            <div class="item" style="padding: 8px;border: none">
+                <label class="font-15" style="position: relative;top: 2px;">{{'pattern_setting.pattern_use' | translate}}</label>
+                <input class="mui-switch item-note" style="width:2.8125rem;height: 1.5625rem" type="checkbox" value="" ng-model="vm.isUsedFlag" ng-click="vm.on_off_change()">
+            </div>
+            <a class="item item-icon-right" style="padding: 10px;border-top: 0.5px solid #403C4B;border-bottom: 0;border-left: 0;border-right: 0;" ng-show="vm.c_changePattern" ng-click="vm.changePattern()">
+                <label class="font-15">{{vm.btn_change_msgs}}</label>
+                <i class="icon iconfont icon-xiugaimima" style="font-size:29px;color: #C8B683"></i>
+            </a>
+        </div>
+        <div class="padding payment-tips--pattern font-12" ng-show="vm.c_settingPassMsg">
+            {{vm.setting_msgs[vm.setting_index]}}
+        </div>
+        <div class="padding payment-tips--pattern font-12" ng-show="vm.c_srcPassMsg">
+            {{'pattern_setting.original_password' | translate}}
+        </div>
+        <!-- 手势密码 -->
+        <div class="f f-c"style="background: transparent;">
+            <div id='lockPattern' style="text-align: center" class='pattern-holder patt-holder f f-c' ng-show="vm.c_showPattern"></div>
+        </div>
+    </div>
+</ion-content>

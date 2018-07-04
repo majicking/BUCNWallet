@@ -1,0 +1,55 @@
+<ion-header-bar class="bar-themeCool" cache-view="false" hide-tabs="false">
+    <h1 class="title1" style="color: #fff;font-weight: normal;">{{'manage.personal_center' | translate}}</h1>
+    <div class="button button-clear icon iconfont icon-tuichu1" style="position: absolute;right:10px;top:6px" ng-click="vm.logout()"></div>
+</ion-header-bar>
+<ion-content class="bg-color bg-themeCool">
+    <div class="manage-content box-bg">
+        <div class="content ionic-pseudo">
+            <div class="my-header" style="height: 95px;">
+                <div class="my-header--absolute">
+                    <img ng-src="{{vm.model.imgAddr?vm.model.imgAddr:'app/platform/resources/img/user.png'}}"
+                         ng-click="showBigImage(vm.model.imgAddr?vm.model.imgAddr:'app/platform/resources/img/user.png')">
+                    <p class="verify" style="background-color:rgba(52,46,59,1);" ng-if="vm.model.isTrustName==0" ui-sref="tab.manage-verify">
+                        <i class="icon iconfont ion-ios-person" style="position: absolute;color:#6f6284;top: 4px;left: 10px;font-size: 16px"></i>
+                        <span style="display: inline-block;font-size: 10.5px;color:#6f6284;padding: 0 0 1px 12px;">{{'home.click_authentication' | translate}}</span>
+                    </p>
+                    <p class="verify" ng-if="vm.model.isTrustName==1">
+                        <i class="icon iconfont icon-shimingrenzheng" style="position: absolute;color:#D5C288;top: 6px;left: 10px;font-size: 11px"></i>
+                        <span style="display: inline-block;color:#D5C288;font-size: 10.5px;padding: 0 0 1px 12px;">{{'home.real_name_user' | translate}}</span>
+                    </p>
+                    <p class="name" ng-if="vm.model.isTrustName==0">{{vm.model.username}}</p>
+                    <p class="name" ng-if="vm.model.isTrustName!=0">{{vm.model.truename}}</p>
+                </div>
+            </div>
+            <div style="margin-top:10px;">
+                <div class="f f-ac f-fs manage-info">
+                    {{'manage.address' | translate}}
+                    <label data-clipboard-text="{{vm.model.walletaddressUse}}" class="btn11 manage-info--label">
+                        {{vm.model.walletaddressShow}}
+                    </label>
+                </div>
+                <div class="f f-ac f-fs manage-info">
+                    {{'manage.public_key' | translate}}
+                    <label data-clipboard-text="{{vm.model.publickey}}" class="btn11 manage-info--label">
+                        {{vm.model.publickey}}
+                    </label>
+                </div>
+                <div class="f f-ac f-fs manage-info">
+                    {{'manage.private_key' | translate}}
+                    <label class="btn11 manage-info--label">
+                        {{vm.model.privatekeyShow}}
+                    </label>
+                </div>
+            </div>
+            <div class="padding manage-copy--box f-c font-10">
+                <div class="manage-copy">{{'manage.copy' | translate}}</div>
+            </div>
+            <div class="list f-ac f-c">
+                <div class="btn-box f-ac f-c" ng-click="goNativeBack('tab.setting')">
+                    <button class="btn-box--main f-ac f-c">{{'manage.setting' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>
+<com-image-box></com-image-box>

@@ -1,0 +1,66 @@
+<ion-header-bar hide-tabs="true" id="s-header" class="{{vm.model.subAccountTypeText.split(',')[4].split(':')[0]}}" cache-view="false">
+    <div class="button button-icon-sm button-clear icon iconfont icon-jiantou" style="left: 2px;" ng-click="goNativeBackParams(vm.model.subAccountTypeText.split(',')[3], {subAccountType:vm.subAccountType})">
+    </div>
+    <h1 class="title1" style="color: #fff;font-weight: normal">转出</h1>
+    <div class="button button-clear" style="position: absolute;right:10px;top:6px" ng-click="moreToggle()">
+        <i class="iconfont {{vm.model.subAccountTypeText.split(',')[1]}}" style="color: #fff;font-size: 30px;"></i>
+    </div>
+    <span class="more-hide-arrow" ng-show="visible"></span>
+    <div class="more-hide" ng-show="visible">
+        <ul>
+            <li class="button button-clear" ng-click="goNativeBackParams(vm.model.subAccountTypeText.split(',')[3], {subAccountType:vm.subAccountType})">
+                <i class="iconfont {{vm.model.subAccountTypeText.split(',')[1]}}" style="color: #fff;font-size: 16px;"></i>
+                <label style="font-size: 15px">账&nbsp;&nbsp;&nbsp;&nbsp;户</label>
+            </li>
+            <li class="button button-clear" ng-click="goNativeBack('tab.account')">
+                <i class="iconfont icon-58-copy" style="color: #fff;font-size: 16px;"></i>
+                <label style="font-size: 15px">首&nbsp;&nbsp;&nbsp;&nbsp;页</label>
+            </li>
+            <li class="button button-clear" ng-click="goNativeBack('tab.notice-list')">
+                <i class="iconfont icon-wodexiaoxi2" style="color: #fff;font-size: 14px;"></i>
+                <label style="font-size: 15px">消&nbsp;&nbsp;&nbsp;&nbsp;息</label>
+            </li>
+            <li class="button button-clear" ng-click="goNativeBack('tab.account-qrcode')">
+                <i class="iconfont icon-erweima1" style="color: #fff;font-size: 14px;"></i>
+                <label style="font-size: 15px">推介码</label>
+            </li>
+            <li class="button button-clear" ng-click="goNativeBack('tab.manage')" ng-if="vm.model.userType=='0'">
+                <i class="iconfont icon-user" style="color: #fff;font-size: 17px;"></i>
+                <label style="font-size: 15px">我&nbsp;&nbsp;&nbsp;&nbsp;的</label>
+            </li>
+        </ul>
+    </div>
+</ion-header-bar>
+<ion-content class="{{vm.model.subAccountTypeText.split(',')[4].split(':')[1]}}">
+    <div class="list">
+        <div class="item">
+            <label class="font-17">{{vm.model.bankCard.bankName}}</label>
+            <p class="font-10">{{vm.model.bankCard.nature}} | 尾号{{vm.model.bankCard.bankCard}}</p>
+        </div>
+        <div class="item-gap"></div>
+        <div class="item withdraw">
+            <label>可转出资金</label>
+            <div class="item-note-orange">{{vm.model.cashAmount|number:2}}</div>
+        </div>
+        <div class="item-gap"></div>
+        <label class="item item-input item-stacked-label withdraw">
+            <span class="input-label withdraw">转出金额</span>
+            <input type="number"
+                   ng-model="vm.input.money"
+                   ng-change="vm.moneyChanged()"
+                   placeholder="请输入转出金额">
+        </label>
+        <div class="item-gap"></div>
+        <label class="item item-input item-stacked-label withdraw">
+            <span class="input-label withdraw">交易密码</span>
+            <input type="password"
+                   ng-model="vm.input.payPassword"
+                   placeholder="请输入交易密码">
+        </label>
+    </div>
+    <div class="padding-horizontal">
+        <button class="button button-block {{vm.model.subAccountTypeText.split(',')[4].split(':')[3]}}" ng-disabled="vm.disabled" ng-click="vm.confirm()">
+            确认申请
+        </button>
+    </div>
+</ion-content>

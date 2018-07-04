@@ -1,0 +1,107 @@
+<ion-view ng-if="langKey=='en'" view-title="用户登录" cache-view="false" class="ionview_login">
+    <div class="button button-icon-sm button-clear" style="color: #fff; position:absolute;right: 10px;z-index:99;" ng-click="setLang(langKey)">{{selectLang}}</div>
+    <div class="bar bar-header bar-positive top-trans">
+        <h1 class="title">用户登录</h1>
+    </div>
+    <ion-content class="bg-color logo-themeCool">
+        <div class="login-tx">
+            <img src="app/platform/resources/img/logo.png" alt="">
+        </div>
+        <div class="content has-header">
+
+            <div class="logo-main box-b">
+                <div class="goPay-info">
+                    <div class="f-fs f-ac write goPay-s">
+                        <i class="icon ion-ios-person gopay-span" style="font-size: 30px"></i>
+                        <input type="text" class="goPay-input"
+                               placeholder="用户名/手机号"
+                               ng-keyup="writeClear($event, 'write')"
+                               ng-focus="writeClear($event, 'write')"
+                               ng-blur="writeBlur($event, 'write')"
+                               ng-model="vm.username">
+                        <i class="icon ion-close-circled input-del-gopay" style="padding-top: 2px;font-size: 15px;right: -5px" ng-click="vm.username=''"></i>
+                    </div>
+                    <div class="f-fs f-ac write goPay-s">
+                        <i class="icon ion-android-lock gopay-span" style="font-size: 30px"></i>
+                        <input type="password" class="goPay-input"
+                               placeholder="密码"
+                               ng-keyup="writeClear($event, 'write')"
+                               ng-focus="writeClear($event, 'write')"
+                               ng-blur="writeBlur($event, 'write')"
+                               ng-model="vm.password">
+                        <i class="icon ion-close-circled input-del-gopay" style="padding-top: 2px;font-size: 15px;right: -5px" ng-click="vm.password=''"></i>
+                    </div>
+                </div>
+                <div class="f f-fe login-forgot">
+                    <span class="payment-tips--weak font-12" ng-click=goNativeBack('forgot') translate="login.forgot"></span>
+                </div>
+
+                <div class="padding">
+                    <button class="login-btn" ng-click="vm.login()" translate="login.login"></button>
+                </div>
+                <div class="padding" style="margin-bottom: 50px">
+                    <button class="login-btn" ng-click="vm.register()" translate="login.register"></button>
+                </div>
+            </div>
+            <span class="font-14 payment-tips--weak" style="text-align: center;display: block;padding-top: 0px;">注册 / 登录即表示您已同意
+                <br/>
+                <p ng-click="goNativeBack('agreement')" class="payment-tips font-14"  translate="login.agreement"></p>
+            </span>
+        </div>
+    </ion-content>
+</ion-view>
+
+<ion-view ng-if="langKey=='zh_CN'" view-title="User login" cache-view="false" class="ionview_login">
+    <div class="button button-icon-sm button-clear" style="color: #fff; position:absolute;right: 10px; z-index:99;" ng-click="setLang(langKey)">{{selectLang}}</div>
+    <div class="bar bar-header bar-positive top-trans">
+        <h1 class="title">User login</h1>
+    </div>
+    <ion-content class="bg-color logo-themeCool">
+        <div class="login-tx">
+            <img src="app/platform/resources/img/logo.png" alt="">
+        </div>
+        <div class="content has-header">
+
+            <div class="logo-main box-b">
+                <div class="goPay-info">
+                    <div class="f-fs f-ac write goPay-s">
+                        <i class="icon ion-ios-person gopay-span" style="font-size: 30px"></i>
+                        <input type="text" class="goPay-input"
+                               placeholder="Username/Mobile"
+                               ng-keyup="writeClear($event, 'write')"
+                               ng-focus="writeClear($event, 'write')"
+                               ng-blur="writeBlur($event, 'write')"
+                               ng-model="vm.username">
+                        <i class="icon ion-close-circled input-del-gopay" style="padding-top: 2px;font-size: 15px;right: -5px" ng-click="vm.username=''"></i>
+                    </div>
+                    <div class="f-fs f-ac write goPay-s">
+                        <i class="icon ion-android-lock gopay-span" style="font-size: 30px"></i>
+                        <input type="password" class="goPay-input"
+                               placeholder="Password"
+                               ng-keyup="writeClear($event, 'write')"
+                               ng-focus="writeClear($event, 'write')"
+                               ng-blur="writeBlur($event, 'write')"
+                               ng-model="vm.password">
+                        <i class="icon ion-close-circled input-del-gopay" style="padding-top: 2px;font-size: 15px;right: -5px" ng-click="vm.password=''"></i>
+                    </div>
+                </div>
+                <div class="f f-fe login-forgot">
+                    <span class="payment-tips--weak font-12" ng-click=goNativeBack('forgot') translate="login.forgot"></span>
+                </div>
+
+                <div class="padding">
+                    <button class="login-btn" ng-click="vm.login()" translate="login.login"></button>
+                </div>
+                <div class="padding" style="margin-bottom: 50px">
+                    <button class="login-btn" ng-click="vm.register()" translate="login.register"></button>
+                </div>
+            </div>
+            <span class="font-14 payment-tips--weak" style="text-align: center;display: block;padding-top: 0px;">
+                Register / login means that you have agreed
+                <br/>
+                <p ng-click="goNativeBack('agreement')" class="payment-tips font-14"  translate="login.agreement"></p>
+            </span>
+        </div>
+    </ion-content>
+</ion-view>
+
